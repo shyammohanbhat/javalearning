@@ -26,6 +26,46 @@
 | Hashing (Map/Set) | Fast lookup, frequency, duplicates, counting | count, distinct, duplicate, frequency | `map.put(x,map.getOrDefault(x,0)+1);` | Two Sum, Group Anagrams, Longest Consecutive Sequence |
 | Monotonic Stack | Next/previous greater/smaller, histogram, sliding max | next greater, next smaller, previous greater/smaller, span | `while(!st.isEmpty() && curr>st.peek()) st.pop(); st.push(curr);` | Next Greater Element I/II, Daily Temperatures, Largest Rectangle Histogram |
 
+### Sliding window:
+    
+##### Fixed Sliding window: 
+
+window size = right - left + 1
+Add → Remove → Update
+
+    left = 0
+    windowValue = 0
+    answer = 0
+    
+    for right = 0 to n-1:
+        add element at right to windowValue
+    
+        if window size > k:
+            remove element at left from windowValue
+            left++
+    
+        if window size == k:
+            answer = max(answer, windowValue)
+    
+    return answer
+    
+##### Dynamic Sliding window
+
+Add → Fix → Update
+
+    left = 0
+    answer = 0
+    
+    for right = 0 to n-1:
+        add element at right to window
+    
+        while window is invalid:
+            remove element at left from window
+            left++
+    
+        answer = max(answer, right - left + 1)
+    
+    return answer
 ---
 
 ## 2️⃣ Linked Lists
